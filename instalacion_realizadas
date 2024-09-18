@@ -1,0 +1,20 @@
+// Se crea una carpeta nueva para el curso accedemos a ella via teminal para inicia
+
+// verificamos que version de nodejs tememos instalada y usamos la version 20.15.0
+$ nvm list
+
+// si no la tenemos la instalamos
+$ nvm install 20.15.0
+
+// si la tenemos la usamos
+$ nvm use 20.15.0
+
+// inicializo mi esquema de trabajo
+$ npm init -y
+
+// instalo las dependencias requeridas en el curso
+$ npm i express dotenv cors helmet
+$ npm i -D typescript @types/node @types/express @types/dotenv @types/cors @types/helmet
+
+// creamos un archivo de configuracion de typescript
+npx tsc --init
