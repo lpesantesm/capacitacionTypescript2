@@ -54,3 +54,7 @@ $ npm i envalid
 //--------------- Se configura la seguridad en los middleware ------------------------
 // Aqui usamos helmet y cors
 
+//----------------Implemenacion de iterconexion de servicio, controlador y rutas
+//Aqui se crean los archivo user.services.ts, user.controller y user.router
+
+
