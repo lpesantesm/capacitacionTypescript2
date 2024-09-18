@@ -23,7 +23,7 @@ class Server {
     }
 
     listen(){
-        this.app.listen(3001, "localhost",() =>{
+        this.app.listen(3002, "localhost",() =>{
             console.log("Servidor levantado")
         })
     }
