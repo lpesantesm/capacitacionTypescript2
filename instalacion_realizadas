@@ -20,7 +20,7 @@ $ npm i -D typescript @types/node @types/express @types/dotenv @types/cors @type
 npx tsc --init
 
 //---Hasta aqui el commit inicial
-//(opcional si tienes una cuenta de github o gitlab)
+//(opcional si tienes una cuenta de github o gitlab para llevar un seguimiento de cambios)
 git init
 git add README.md
 git commit -m "first commit"
@@ -29,3 +29,9 @@ git remote add origin ****Aqui va la ruta de tu repositorio remoto****
 git push -u origin main
 
 //------------- Inicia la Configuración ---------------------
+//Aqui se define la arquitectrua MVC con express, 
+//Se crea la estructura las carpeta donde se almacena los componentes
+//Se define el objeto al que se le va a aplicar MVC en el ejercicio: user  
+// Modelo de comunicacion MVC aplicado al objeto 
+// routes -> controller -> services -> repositories
+// En los repositories se defines la conexiones a base por medio de algun ORM 
