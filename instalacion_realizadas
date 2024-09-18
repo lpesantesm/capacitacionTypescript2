@@ -50,3 +50,7 @@ $ npm i ts-node
 //Se instala otro dependencia
 $ npm i envalid
 // aqui se usa la libreria dotenv en src/config/server.ts
+
+//--------------- Se configura la seguridad en los middleware ------------------------
+// Aqui usamos helmet y cors
+
