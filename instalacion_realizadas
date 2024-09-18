@@ -57,4 +57,7 @@ $ npm i envalid
 //----------------Implemenacion de iterconexion de servicio, controlador y rutas
 //Aqui se crean los archivo user.services.ts, user.controller y user.router
 
+//---- Tiempo: 1:17:15 -> Aqui se  define los wrappers
+// La arquitectura: (-> significa "llama a..")
+// controller -> helper -> interface
 
