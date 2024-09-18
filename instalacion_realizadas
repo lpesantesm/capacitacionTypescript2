@@ -68,3 +68,12 @@ $ npm i envalid
 
 //---- Tiempo: 1:31:25 -> Aqui se inicia la separacion de los mensajes como constantes
 // Se trata a los mensajes como constantes
+
+//---- Tiempo: 1:44:00 -> Aqui se implemente los middlewares con morgan
+$ npm i morgan @types/morgan
+// se presento la novedad de que no funciona morgan al invocarlo desde el src/main.ts
+// Se corrije las ubicacion de las dependencia @types/morgan a "dev" en el package.json 
+// se elimina la carpeta: node_modules
+$ rm -rf node_modules/
+// Se vuelve a instalar
+$ npm i

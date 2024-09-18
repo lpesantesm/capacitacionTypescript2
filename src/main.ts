@@ -3,6 +3,7 @@ import { config } from './config/server';
 import helmet from 'helmet';
 import cors from 'cors';
 import { UserRoutes } from './modules/user/routes/user.routes';
+import morgan from 'morgan';
 
 
 class Server {
@@ -29,6 +30,7 @@ class Server {
         this.app.use(helmet())
         this.app.use(cors())
         this.app.use(express.json()) // ! para enviar y recibir json a traes de express por la ruta
+        this.app.use(morgan('dev'))
     }
 
     config(){
