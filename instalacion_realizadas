@@ -45,3 +45,8 @@ git push -u origin main
 // 4. Se implemente el denomio que levanta el servicio en package.json con nodemon
 $ npm i nodemon
 $ npm i ts-node
+
+//-------------- Se define las entradas (variables de entorno)-----------------------
+//Se instala otro dependencia
+$ npm i envalid
+// aqui se usa la libreria dotenv en src/config/server.ts

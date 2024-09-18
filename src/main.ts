@@ -1,8 +1,10 @@
 import express  from 'express'
+import { config } from './config/server';
 
 class Server {
     public app!: express.Application
-
+    private host!: string
+    private port!: number
     constructor(){
         this.app = express()
         this.routes();
@@ -19,12 +21,13 @@ class Server {
     }
 
     config(){
-
+        this.port = config.server.PORT
+        this.host = config.server.HOST 
     }
 
     listen(){
-        this.app.listen(3002, "localhost",() =>{
-            console.log("Servidor levantado")
+        this.app.listen(this.port, this.host,() =>{
+            console.log(`Servidor levantado en ${this.host}:${this.port}`)
         })
     }
 }
