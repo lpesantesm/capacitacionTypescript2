@@ -62,3 +62,6 @@ $ npm i envalid
 // controller -> helper -> interface
 
 //---- Tiempo: 1:24:17 -> Aqui se definen wrappers dentro de los catch
+
+//---- Tiempo: 1:28:25 -> Aqui se inicia la separacion de las cosas con "enum"
+// Se trata a los mensajes como constantes
