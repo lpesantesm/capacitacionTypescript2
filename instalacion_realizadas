@@ -35,3 +35,19 @@ git push -u origin main
 // Modelo de comunicacion MVC aplicado al objeto 
 // routes -> controller -> services -> repositories
 // En los repositories se defines la conexiones a base por medio de algun ORM 
+
+
+//-------------- Se define las entradas -----------------------
+//Se crea un archivo main.ts en la raiz de src:
+// 1. Se define el listen para el servidor de escucha
+// 2. Se define el contructor que carga los metodos: routes, middlewares y config
+// 3. Se define el servidor
+// 4. Se implemente el denomio que levanta el servicio en package.json con nodemon
+$ npm i nodemon
+$ npm i ts-node
+
+//NOTA: el parametro  "exec":"ts-node -teanspile-only src/main.ts" tuve que quitarlo 
+//del archivo nodemon.json para que me funcione el servidor
+
+
+//OJO: el main esta mal definido en el minuto 35:42  al momento que comenta el codigo.
