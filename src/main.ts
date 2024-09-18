@@ -2,13 +2,17 @@ import express  from 'express'
 import { config } from './config/server';
 import helmet from 'helmet';
 import cors from 'cors';
+import { UserRoutes } from './modules/user/routes/user.routes';
 
 
 class Server {
     public app!: express.Application
     private host!: string
     private port!: number
-    
+    private paths ={
+        user: '/user',
+    }
+
 
     constructor(){
         this.app = express()
@@ -18,6 +22,7 @@ class Server {
     }
 
     routes(){
+        this.app.use(this.paths.user, UserRoutes.routes)
     }
 
     middleware(){
