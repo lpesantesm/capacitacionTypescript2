@@ -29,8 +29,9 @@ class Server {
     middleware(){
         this.app.use(helmet())
         this.app.use(cors())
+        this.app.use(morgan('tiny'))
         this.app.use(express.json()) // ! para enviar y recibir json a traes de express por la ruta
-        this.app.use(morgan('dev'))
+       
     }
 
     config(){
