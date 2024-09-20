@@ -17,8 +17,8 @@ class Server {
 
     constructor(){
         this.app = express()
+        this.middleware();  
         this.routes();
-        this.middleware();
         this.config()       
     }
 
