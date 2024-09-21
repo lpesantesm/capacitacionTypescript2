@@ -92,3 +92,6 @@ $ npm run start
 // Se instala jsonwebtoken
 $ npm i jsonwebtoken
 $ npm i @type/jsonwebtoken
+
+//------------------Mejoras del validador ------------------------------
+//Aqui podemos pedir un minimo de carateres para la clave secreta
