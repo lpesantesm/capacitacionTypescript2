@@ -1,5 +1,13 @@
+import { JwtHelper } from "../../../shared/helpers/jwt.helper"
+
 export class UserService {
     get(){
-        return "HOLA con Morgan"
+       const jwtHelper = new JwtHelper()
+
+       return jwtHelper.create({
+                    nombre: "Nombre",
+                    apellido: "Apellido"
+               })
+         
     }
 }

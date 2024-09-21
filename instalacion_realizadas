@@ -25,17 +25,16 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin ****Aqui va la ruta de tu repositorio remoto****
+git remote add origin \***\*Aqui va la ruta de tu repositorio remoto\*\***
 git push -u origin main
 
 //------------- Inicia la Configuración ---------------------
-//Aqui se define la arquitectrua MVC con express, 
+//Aqui se define la arquitectrua MVC con express,
 //Se crea la estructura las carpeta donde se almacena los componentes
 //Se define el objeto al que se le va a aplicar MVC en el ejercicio: user  
-// Modelo de comunicacion MVC aplicado al objeto 
+// Modelo de comunicacion MVC aplicado al objeto
 // routes -> controller -> services -> repositories
-// En los repositories se defines la conexiones a base por medio de algun ORM 
-
+// En los repositories se defines la conexiones a base por medio de algun ORM
 
 //-------------- Se define las entradas -----------------------
 //Se crea un archivo main.ts en la raiz de src:
@@ -57,7 +56,7 @@ $ npm i envalid
 //----------------Implemenacion de iterconexion de servicio, controlador y rutas
 //Aqui se crean los archivo user.services.ts, user.controller y user.router
 
-//---- Tiempo: 1:17:15 -> Aqui se  define los wrappers
+//---- Tiempo: 1:17:15 -> Aqui se define los wrappers
 // La arquitectura: (-> significa "llama a..")
 // controller -> helper -> interface
 
@@ -72,19 +71,24 @@ $ npm i envalid
 //---- Tiempo: 1:44:00 -> Aqui se implemente los middlewares con morgan
 $ npm i morgan @types/morgan
 // se presento la novedad de que no funciona morgan al invocarlo desde el src/main.ts
-// Se corrije las ubicacion de las dependencia @types/morgan a "dev" en el package.json 
+// Se corrije las ubicacion de las dependencia @types/morgan a "dev" en el package.json
 // se elimina la carpeta: node_modules
 $ rm -rf node_modules/
 // Se vuelve a instalar
 $ npm i
 
-//--------------- Case del 18 de Septiembre ---------------
-//Se completa la coiguracion del morgan, pero solo funciona cuando el codigo falla Error CODE 404
+//--------------- Clase del 18 de Septiembre ---------------
+//Se completa la configuracion del morgan, pero solo funciona cuando el codigo falla Error CODE 404
 
-//Configuacion de ambiente y script de pre-compialacion 
-//Se realizan configuraciones den el tsconfig.json y el package.json (esta ultima para indica el scricipt para la generacion de los dist) 
+//Configuacion de ambiente y script de pre-compialacion
+//Se realizan configuraciones den el tsconfig.json y el package.json (esta ultima para indica el scricipt para la generacion de los dist)
 //Se ejecuta la generacion de los dist con: (hasta el min 17)
 $ npm run build
-//tambien se crea el START (en package.json) que es un script que me permite levantar la version complila no si antes generar una nueva distro con los ultimos cambios 
+//tambien se crea el START (en package.json) que es un script que me permite levantar la version complila no si antes generar una nueva distro con los ultimos cambios
 //"start": "npm run build && node dist/main.js" (hasta el min 22)
-$ npm run star
+$ npm run start
+
+//---------------- Configuracion de seguridades jsonwebtoken-----------------
+// Se instala jsonwebtoken
+$ npm i jsonwebtoken
+$ npm i @type/jsonwebtoken
