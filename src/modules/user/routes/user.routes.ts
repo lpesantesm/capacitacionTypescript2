@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { UserController } from '../controller/user.controller';
+import { jwtMiddleware } from "../../../shared/middleware/jwt.middleware";
 
 export class UserRoutes {
     static get routes(): Router {
@@ -9,6 +10,7 @@ export class UserRoutes {
 
     router.get(
       "/",
+      [jwtMiddleware],
       userController.get.bind(userController) 
     )    
 

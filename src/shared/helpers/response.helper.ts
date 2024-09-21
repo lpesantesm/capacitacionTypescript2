@@ -15,7 +15,7 @@ export const serviceResponse =(
 export const wrapperError = (
     params: ServicesResponsesInterface
 ) => {
-    params.res.statusCode = HTTPCODE.errorServer  //en lugar de 500
+    params.res.statusCode = params?.statusCode ?? HTTPCODE.errorServer  //en lugar de 500
     return params.res.json({
         data: params.data ?? null,
         message: params.message ?? error, //En lugar del texto

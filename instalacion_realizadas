@@ -97,3 +97,6 @@ $ npm i @type/jsonwebtoken
 //Aqui podemos pedir un minimo de carateres para la clave secreta
 
 //----------------Implemetacion de un jwt que nos autentifica desde otras peticiones (aqui hasta 1:04:35)
+//prueba el resultado en: https://jwt.io
+
+//----------------Proteccion de las rutas con middleware --------------
