@@ -1,7 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 import { HTTPCODE } from "../enum/http.code";
-import { JwtHelper } from "../helpers/jwt.helper";
-import { wrapperError } from "../helpers/response.helper";
+import { JwtHelper, wrapperError } from "../helpers";
 
 const jwtMiddleware = (
     req: Request,

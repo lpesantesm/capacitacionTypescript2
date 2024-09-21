@@ -100,3 +100,4 @@ $ npm i @type/jsonwebtoken
 //prueba el resultado en: https://jwt.io
 
 //----------------Proteccion de las rutas con middleware --------------
+//en el minuto 1:21:42 se hace referencia a la extension Auto Barrel y se lo usa para crear el archivo index en: shared/helpers
