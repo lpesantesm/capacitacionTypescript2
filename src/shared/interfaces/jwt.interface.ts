@@ -1,4 +1,4 @@
-export interface JwtInterface{
-    nombre: string,
-    apellido: string,
+export interface JwtInterface<T>{
+    data: T,
+    date: string,
 }

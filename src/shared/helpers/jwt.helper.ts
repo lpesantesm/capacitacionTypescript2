@@ -9,7 +9,7 @@ export class JwtHelper {
         this.SECRET = config.server.JWT_SECRET
     }
 
-    create(payload:JwtInterface ){
+    create(payload:JwtInterface<any> ){
         try{
             return jwt.sign(payload,this.SECRET,{
               expiresIn: "1m"  

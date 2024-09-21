@@ -12,6 +12,12 @@ export class UserRoutes {
       userController.get.bind(userController) 
     )    
 
+    router.post(
+      "/login",
+      userController.login.bind(userController) 
+    )    
+
+
     return router
     }
 }

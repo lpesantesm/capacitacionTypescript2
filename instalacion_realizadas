@@ -95,3 +95,5 @@ $ npm i @type/jsonwebtoken
 
 //------------------Mejoras del validador ------------------------------
 //Aqui podemos pedir un minimo de carateres para la clave secreta
+
+//----------------Implemetacion de un jwt que nos autentifica desde otras peticiones (aqui hasta 1:04:35)
