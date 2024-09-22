@@ -142,3 +142,14 @@ $ npm i typeorm pg //pg es la conexion a postgreSQL
 //desde el minuto 49 inicia la configuracion de DOKER POSTGRESQL,
 //se hace un ajuste de dependencias
 $ npm i envalid dotenv
+
+//--------------------Creacion de las entidades y ajustes en el uso de la Entidad user------------------------------
+//Inicia en min 1:15:00
+//Creamos la entidad USER con el archivos ./scr/entities/user.entity.ts
+//Debemos instalar reflect-metadata
+$ npm i reflect-metadata
+//Aqui se presento una novedad en el tipado durante la codificacion del user.entity.ts
+//Se soluciono activando los parametro en el tsconfig.json:
+"experimentalDecorators": true, /_ Enable experimental support for legacy experimental decorators. _/
+"emitDecoratorMetadata": true, /_ Emit design-type metadata for decorated declarations in source files. _/
+// e importando usando la entidad en: baseConfig.ts
