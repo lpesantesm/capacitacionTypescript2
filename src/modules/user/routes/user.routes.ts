@@ -10,8 +10,7 @@ export class UserRoutes {
 
     router.get(
       "/",
-      [jwtMiddleware],
-      userController.get.bind(userController) 
+       userController.get.bind(userController) 
     )    
 
     router.post(

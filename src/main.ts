@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { UserRoutes } from './modules/user/routes/user.routes';
 import morgan from 'morgan';
+import { jwtMiddleware } from './shared/middleware/jwt.middleware';
 
 
 class Server {
@@ -31,7 +32,7 @@ class Server {
         this.app.use(cors())
         this.app.use(morgan('tiny'))
         this.app.use(express.json()) // ! para enviar y recibir json a traes de express por la ruta
-       
+        this.app.use(jwtMiddleware)
     }
 
     config(){
