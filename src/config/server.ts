@@ -1,4 +1,4 @@
-import  { cleanEnv, host, makeValidator, port }  from "envalid"
+import  { cleanEnv, host, makeValidator, port, str, bool }  from "envalid"
 import dotenv from "dotenv"
 
 dotenv.config()
@@ -15,5 +15,13 @@ export const config = {
         HOST: host(),
         PORT: port(),
         JWT_SECRET: minLength()
-    })
+    }),
+    POSTGRES: cleanEnv(process.env, {
+        DB_HOST: host(),
+        DB_PORT: port(),
+        DB_NAME: str(),
+        DB_username: str(),
+        DB_password: str(),
+        DB_synchronize: bool(),
+      }),
 }

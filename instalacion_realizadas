@@ -136,3 +136,9 @@ $ npm i -d tsc-alias
 
 //---------------------Instalacion del TYPEORM------------------
 $ npm i typeorm pg //pg es la conexion a postgreSQL
+
+//---------------------Configuracion de la base de datos -----------------
+//Se crea el archivo de conexion y lo configura
+//desde el minuto 49 inicia la configuracion de DOKER POSTGRESQL,
+//se hace un ajuste de dependencias
+$ npm i envalid dotenv

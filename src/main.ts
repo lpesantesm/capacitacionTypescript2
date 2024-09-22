@@ -5,6 +5,7 @@ import cors from 'cors';
 import { UserRoutes } from './modules/user/routes/user.routes';
 import morgan from 'morgan';
 import { jwtMiddleware } from './shared/middleware/jwt.middleware';
+import { DataBaseConfig } from './config/baseConfig';
 
 
 class Server {
@@ -38,6 +39,7 @@ class Server {
     config(){
         this.port = config.server.PORT
         this.host = config.server.HOST 
+        new DataBaseConfig().connect()
     }
 
     listen(){
