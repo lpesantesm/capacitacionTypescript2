@@ -115,3 +115,11 @@ $ npm i @type/jsonwebtoken
 //-------------------ajuste del midellware 2------------------------
 //si viene de la ruta login, que no valide
 //No se probo el ejemplo!!
+
+//--------------- Clase del 19 de Septiembre ---------------
+//Resumen hasta el minuto 15
+
+//------------------Configuracion de sinonimos de rutas---------------
+//Se instala una libreria para manejar rutas relativas
+$ npm i tsconfig-paths tslib
+//Se hacen ajustes en el tsconfig.json y en el nodemon.json
