@@ -123,3 +123,13 @@ $ npm i @type/jsonwebtoken
 //Se instala una libreria para manejar rutas relativas
 $ npm i tsconfig-paths tslib
 //Se hacen ajustes en el tsconfig.json y en el nodemon.json
+
+//-------------------Se cambian las importaciones por los sinonimos------------
+//Se hace un ajuste en tsconfig.json
+//se instala las librerias tsc-alias
+$ npm i -d tsc-alias
+//Hasta aqui en el video sigue con problema, en mi codigo esta normal
+//se realiza configuraciones que usa el instructor en tsconfig.json
+//Linea 14: "target": "es2020",
+//Linea 15: "lib":["es2020"],
+// TODO OK hasta aqui al correr: $ npm run start
