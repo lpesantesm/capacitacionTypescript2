@@ -9,11 +9,18 @@ const jwtMiddleware = (
     next: NextFunction
 ) =>{
     const authorization = req.headers.authorization
-
+    const excluyePath = [
+        'login', ]
+    const valid = excluyePath.filter((path) => {
+                        if(!req.url.includes(path)){
+                            return true
+                        }
+                   })   
+    
     try{
         const jwtHelper = new JwtHelper()
-
-        if(authorization?.startsWith("Bearer ")){
+ 
+        if(authorization?.startsWith("Bearer ") && valid){
             const code = authorization?.split(" ")[1]
             const status =jwtHelper.validate(code)
             console.log({status})

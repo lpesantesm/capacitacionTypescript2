@@ -111,3 +111,7 @@ $ npm i @type/jsonwebtoken
 
 //-------------------ajuste del middleware -----------------------
 //se mejora la programacion
+
+//-------------------ajuste del midellware 2------------------------
+//si viene de la ruta login, que no valide
+//No se probo el ejemplo!!
