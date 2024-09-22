@@ -133,3 +133,6 @@ $ npm i -d tsc-alias
 //Linea 14: "target": "es2020",
 //Linea 15: "lib":["es2020"],
 // TODO OK hasta aqui al correr: $ npm run start
+
+//---------------------Instalacion del TYPEORM------------------
+$ npm i typeorm pg //pg es la conexion a postgreSQL

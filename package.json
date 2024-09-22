@@ -21,8 +21,10 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.5",
+    "pg": "^8.13.0",
     "ts-node": "^10.9.2",
-    "tsc-alias": "^1.8.10"
+    "tsc-alias": "^1.8.10",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
