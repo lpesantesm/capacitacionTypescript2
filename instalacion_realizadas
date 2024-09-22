@@ -101,3 +101,10 @@ $ npm i @type/jsonwebtoken
 
 //----------------Proteccion de las rutas con middleware --------------
 //en el minuto 1:21:42 se hace referencia a la extension Auto Barrel y se lo usa para crear el archivo index en: shared/helpers
+
+//-----------------Pruebas de validacion con token ----------------------
+// Aqui se prueba como un si la llamada a la ruta corresponde a una entrada valida por token
+//Se realiza una consulta postman para obtener el toke en : localhost:3002/user/login
+//Se espera un minuto para que el token expire (dura solo ese tiempo)
+//Se realiza una consulta postman para probar el acceso usando el token a: localhost:3002/user  
+// se mejora el mensaje en jwt.middleware con un catch y se prueba

@@ -3,7 +3,7 @@ import { UserLoginInterface } from "../interfaces/user.interface"
 
 export class UserService {
     get(){
-         
+       return "Ruta Protegida"  
     }
 
     login(user: UserLoginInterface){
