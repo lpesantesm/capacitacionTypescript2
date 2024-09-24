@@ -161,3 +161,8 @@ $ npm i reflect-metadata
 
 //-------------------------Clase del 21 de Septiembre------------------------
 //Configuracion de la conexión a la base de datos: re-definicion de la clase conexion a un objeto estatico
+
+//------------Uso del TypeORM para consultas----------------
+//Configuramos el user.respository.ts
+//llenamos con datos la tabla usuario
+//se consulta por postman min 3:45:29

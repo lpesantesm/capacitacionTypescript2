@@ -30,6 +30,11 @@ export class DataBaseConfig {
       }
     }
 
+    public static async getConnection(){
+       return this.cnx
+    }
+
+
     public static async disconnect(){
             if(this.cnx){
                await this.cnx.destroy() 
