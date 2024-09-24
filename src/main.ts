@@ -39,7 +39,7 @@ class Server {
     config(){
         this.port = config.server.PORT
         this.host = config.server.HOST 
-        new DataBaseConfig().connect()
+        DataBaseConfig.connect()
     }
 
     listen(){

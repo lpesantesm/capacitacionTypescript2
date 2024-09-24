@@ -158,3 +158,6 @@ $ npm i reflect-metadata
 //Se agrega la entidad movie
 //Use el esquema=> schema: 'security'
 //Si no se define el esquema se considerar el esquema Public por defecto
+
+//-------------------------Clase del 21 de Septiembre------------------------
+//Configuracion de la conexión a la base de datos: re-definicion de la clase conexion a un objeto estatico

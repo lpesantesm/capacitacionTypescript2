@@ -1,4 +1,4 @@
-import { config } from "../../config/server"
+import { config } from "@config/server"
 import jwt from "jsonwebtoken" 
 import { JwtInterface } from "../interfaces/jwt.interface"
 

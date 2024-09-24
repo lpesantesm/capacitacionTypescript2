@@ -4,9 +4,9 @@ import { UserEntity } from "@/entities/user.entity";
 import { MovieEntity } from "@/entities/movies.entity";
 
 export class DataBaseConfig {
-      cnx!: DataSource;
+      private static cnx: DataSource;
    
-      async connect(){
+      public static async  connect(){
       try {
           this.cnx = new DataSource({
           type: "postgres",
@@ -30,10 +30,21 @@ export class DataBaseConfig {
       }
     }
 
-    async disconnect(){
+    public static async disconnect(){
             if(this.cnx){
                await this.cnx.destroy() 
             }
         }
 
 }
+
+
+process.on('SIGINT', async () => {
+  await DataBaseConfig.disconnect();
+  process.exit();
+})
+
+process.on('SIGTERM', async () => {
+  await DataBaseConfig.disconnect();
+  process.exit();
+})

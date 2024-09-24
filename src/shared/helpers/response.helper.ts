@@ -1,4 +1,4 @@
-import { error, success } from '../constants/messages.constans';
+import { error, success } from '@constants/messages.constans';
 import { HTTPCODE } from "../enum/http.code";
 import { ServicesResponsesInterface } from "../interfaces/responses.interface";
 
