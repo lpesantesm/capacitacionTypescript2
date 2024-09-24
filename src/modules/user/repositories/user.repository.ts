@@ -14,6 +14,11 @@ export class UserRepositories{
             //Me devuelve todos los usuarios
             const usersAll = await cnx
                                 .createQueryBuilder()
+                                .select([
+                                    'user.id as "id"',
+                                    `concat(user.name, ' ', user.lastName ) as "fullName"`,
+                                    'user.body as "body"'
+                                ])
                                 .from(UserEntity,"user")
                                 .getRawMany<UserI>()
             

@@ -170,3 +170,6 @@ $ npm i reflect-metadata
 
 //---------------Creacion de consulta get -----------------
 //Con parametros de busquedas: UsersAll y UsersOne
+
+//----------------Crea una consulta con selector de campos 
+//Se puede escoger los campos de la tabla que quiero mostrar
