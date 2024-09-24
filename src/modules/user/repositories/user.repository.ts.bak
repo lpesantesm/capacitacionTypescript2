@@ -1,7 +1,7 @@
 import { DataBaseConfig } from "@/config/baseConfig"
 import { UserEntity } from "@/entities/user.entity";
 
-export class UserRepositories{
+export class UserRepository{
     async getAllUsers(){
         try {
             const cnx = await DataBaseConfig.getConnection();

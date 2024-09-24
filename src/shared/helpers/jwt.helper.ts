@@ -9,23 +9,23 @@ export class JwtHelper {
         this.SECRET = config.server.JWT_SECRET
     }
 
-    create(payload:JwtInterface<any> ){
-        try{
-            return jwt.sign(payload,this.SECRET,{
-              expiresIn: "1m"  
-            })
-        } catch (error: any){
-            throw new Error(error)
-        }
+  create(payload: JwtInterface<any>){
+    try {
+
+      return jwt.sign(payload, this.SECRET, {
+        expiresIn: "10m"
+      });
+
+    } catch (error: any) {
+      throw new Error(error)
     }
+  }
 
-    validate(token: string){
-        return jwt.verify(token, this.SECRET)
-    }
+  validate(token: string){
+    return jwt.verify(token, this.SECRET);
+  }
 
-    decode(token: string){
-        return jwt.decode(token)
-    }
-
-
+  decode(token: string){
+    return jwt.decode(token);
+  }
 }

@@ -1,11 +1,11 @@
 import  { cleanEnv, host, makeValidator, port, str, bool }  from "envalid"
-import dotenv from "dotenv"
+import * as dotenv from "dotenv"
 
 dotenv.config()
 
 const minLength = makeValidator((value: string) =>{
-    if(value.length <=15){
-        throw new Error ('La variable debe tener minimo 15 caracteres')
+    if(value.length <=25){
+        throw new Error ('La variable debe tener minimo 25 caracteres')
     }
     return value
 })

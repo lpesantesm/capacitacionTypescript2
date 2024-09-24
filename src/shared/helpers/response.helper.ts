@@ -1,23 +1,26 @@
-import { error, success } from '@constants/messages.constans';
-import { HTTPCODE } from "../enum/http.code";
-import { ServicesResponsesInterface } from "../interfaces/responses.interface";
 
-export const serviceResponse =(
-    params: ServicesResponsesInterface
-) =>{
-    params.res.statusCode = HTTPCODE.ok  //En lugar de 200
-    return params.res.json({
-        data: params.data,
-        message: params.message ?? success, //En lugar del texto
-    })
+import { HTTP_CODE } from "../enum/http.code.enum";
+import { ServicesResponsesInterface } from "../interfaces/responses.interface";
+import { error, success } from "../constants/messages.constants";
+
+export const serviceResponse = (
+params: ServicesResponsesInterface
+) => {
+  params.res.statusCode = HTTP_CODE.ok;
+
+  return params.res.json({
+    data: params.data,
+    message: params.message ?? success
+  })
 }
 
 export const wrapperError = (
-    params: ServicesResponsesInterface
+  params: ServicesResponsesInterface
 ) => {
-    params.res.statusCode = params?.statusCode ?? HTTPCODE.errorServer  //en lugar de 500
-    return params.res.json({
-        data: params.data ?? null,
-        message: params.message ?? error, //En lugar del texto
-    })
+  params.res.statusCode = params?.statusCode ?? HTTP_CODE.errorServer;
+
+  return params.res.json({
+    data: params.data ?? null,
+    message: params.message ?? error
+  })
 }

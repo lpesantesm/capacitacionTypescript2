@@ -1,12 +1,12 @@
-import { DataSource } from "typeorm";
-import { config } from "./server";
-import { UserEntity } from "@/entities/user.entity";
-import { MovieEntity } from "@/entities/movies.entity";
+import { DataSource } from "typeorm"
+import { config } from "./server"
+import { UserEntity } from "@/entities/user.entity"
+import { MovieEntity } from "@/entities/movies.entity"
 
 export class DataBaseConfig {
       private static cnx: DataSource;
    
-      public static async  connect(){
+      public static async connect(){
       try {
           this.cnx = new DataSource({
           type: "postgres",
@@ -16,7 +16,7 @@ export class DataBaseConfig {
           password: config.POSTGRES.DB_password,
           database: config.POSTGRES.DB_NAME,
           synchronize: config.POSTGRES.DB_synchronize,
-          entities: [UserEntity,MovieEntity]
+          entities: [UserEntity, MovieEntity]
         });
   
         if(!this.cnx.isInitialized){

@@ -1,12 +1,10 @@
-import { Router } from "express"
-import { UserController } from '../controller/user.controller';
-import { jwtMiddleware } from "../../../shared/middleware/jwt.middleware";
+import { Router } from "express";
+import { UserController } from "../controller/user.controller";
 
 export class UserRoutes {
-    static get routes(): Router {
+  static get routes(): Router {
     const router = Router()
-    const userController = new UserController();    
-
+    const userController = new UserController();   
 
     router.get(
       "/",
@@ -17,7 +15,6 @@ export class UserRoutes {
       "/login",
       userController.login.bind(userController) 
     )    
-
 
     return router
     }

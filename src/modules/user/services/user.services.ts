@@ -1,18 +1,20 @@
 import { JwtHelper } from "../../../shared/helpers/jwt.helper"
-import { UserLoginInterface } from "../interfaces/user.interface"
+import { UserLoginInterface } from "../interfaces/user.interface";
+import { UserRepositories } from "../repositories/user.repository";
 
 export class UserService {
-    get(){
-       return "Ruta Protegida"  
-    }
+  async get() {
+    
+    const allUsers = await new UserRepositories().getAllUsers()
+    return allUsers;
+  }
 
-    login(user: UserLoginInterface){
-        const jwtHelper = new JwtHelper()
+  login(user: UserLoginInterface){
+    const jwtHelper = new JwtHelper()
 
-        return jwtHelper.create({
-            data: user,
-            date: new Date().toISOString()
-        })
- 
-    }
+    return jwtHelper.create({
+      data: user,
+      date: new Date().toISOString()
+    })
+  }
 }
