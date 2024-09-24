@@ -173,3 +173,7 @@ $ npm i reflect-metadata
 
 //----------------Crea una consulta con selector de campos 
 //Se puede escoger los campos de la tabla que quiero mostrar
+
+
+//------------------Ajustes para pagineo en consultas -----------
+//Se ajusta la funcion UsersAll para que pueda manejar paguineo

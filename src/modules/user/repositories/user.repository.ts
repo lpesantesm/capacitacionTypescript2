@@ -20,14 +20,9 @@ export class UserRepositories{
                                     'user.body as "body"'
                                 ])
                                 .from(UserEntity,"user")
+                                .offset(1)
+                                .limit(5)
                                 .getRawMany<UserI>()
-            
-            
-            //Me devuelve solo un usuario
-            const usersOne = await cnx
-                                .createQueryBuilder()
-                                .from(UserEntity,"user")
-                                .getRawOne<UserI>()
             
             return usersAll
 
@@ -36,4 +31,28 @@ export class UserRepositories{
             throw new Error(error)
         }
     }
+
+    async getFindOneUser(){
+        try {
+            const cnx = await DataBaseConfig
+                              .getConnection();
+
+            //Me devuelve solo un usuario
+            const usersOne = await cnx
+                                .createQueryBuilder()
+                                .from(UserEntity,"user")
+                                .getRawOne<UserI>()
+            
+            return usersOne
+
+        } catch (error: any) {
+            console.error(error)
+            throw new Error(error)
+        }
+    }
+
+
+
+
+
 }
