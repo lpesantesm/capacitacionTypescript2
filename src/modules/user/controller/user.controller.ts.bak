@@ -23,9 +23,9 @@ export class UserController {
     }
   }
 
-  async createUser(req: Request, res: Response){
+  login(req: Request, res: Response){
     try {
-      const body = req.body as UserI;
+      const body = req.body as UserLoginInterface;
       const userService = new UserService();
       const response = await userService.createUser(body);
 

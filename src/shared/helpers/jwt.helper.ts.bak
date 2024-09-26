@@ -13,7 +13,7 @@ export class JwtHelper {
     try {
 
       return jwt.sign(payload, this.SECRET, {
-        expiresIn: "20m"
+        expiresIn: "10m"
       });
 
     } catch (error: any) {

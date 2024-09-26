@@ -1,7 +1,7 @@
 
 import { HTTP_CODE } from "../enum/http.code.enum";
 import { ServicesResponsesInterface } from "../interfaces/responses.interface";
-import { error, success } from "@constants/messages.constants";
+import { error, success } from "../constants/messages.constants";
 
 export const serviceResponse = (
 params: ServicesResponsesInterface

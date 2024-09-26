@@ -4,7 +4,6 @@ import { JwtHelper, wrapperError } from "../helpers";
 import { unAuthorization } from "@constants/index";
 
 
-
 const jwtMiddleware = (
   req: Request,
   res: Response,
@@ -29,7 +28,7 @@ const jwtMiddleware = (
         throw new Error(unAuthorization)
       }
       const status = jwtHelper.validate(code);
-
+      console.log({ status });
       if (status) {
         next();
       }

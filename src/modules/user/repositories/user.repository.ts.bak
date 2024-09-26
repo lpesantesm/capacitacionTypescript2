@@ -6,9 +6,9 @@ import { createSuccess } from "@/shared/constants";
 
 export class UserRepository {
   /**
-   * MÃ©todo de obtener multiples usuarios con paginaciÃ³n
+   * Método de obtener multiples usuarios con paginación
    * @param query es de tipo GetAllUserParams
-   * @returns Un objeto con informaciÃ³n del listado de usuario
+   * @returns Un objeto con información del listado de usuario
    */
   async getAllUsers(query: GetAllUserParams) {
     try {
@@ -67,7 +67,7 @@ export class UserRepository {
   }
 
   /**
-   * MÃ©todo para crear un registro de Usuarios
+   * Método para crear un registro de Usuarios
    * @param user Objeto de Tipo UserI
    * @returns Retornamos el registro en base
    */
@@ -86,17 +86,17 @@ export class UserRepository {
   }
 
   /**
-   * MÃ©todo para actualizar un usuario
+   * Método para actualizar un usuario
    * @param id Id del usuario a editar
    * @param user Objeto con las propiedades a editar
-   * @returns Retorna mensaje de Ã‰xito o error
+   * @returns Retorna mensaje de Éxito o error
    */
   async editUser(id: number,user: UserI) {
     try {
       const cnx = await DataBaseConfig.getConnection();
 
       /*
-      MÃ©todo para utilizar el createQueryBuilder Y actualizar
+      Método para utilizar el createQueryBuilder Y actualizar
       const userUpdated = await cnx.createQueryBuilder()
       .update(UserEntity)
       .set(user)
@@ -105,7 +105,7 @@ export class UserRepository {
       return await userRepository.save(newUser);
       */
 
-      //MÃ©todo para actualizar mediante los repositorios de typeOrm
+      //Método para actualizar mediante los repositorios de typeOrm
       const userRepository = cnx.getRepository(UserEntity);
 
       const newUser = await userRepository.update(id ,user);
