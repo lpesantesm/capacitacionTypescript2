@@ -41,7 +41,7 @@ export class UserService {
       throw new Error('No existe el usuario');
     }
     const existName = await userRepository.getFindOne('name', user.name, id);
-    console.log({existName});
+
     if(existName){
       throw new Error(`Ya existe el usuario con nombre: ${existName.name}`);
     }

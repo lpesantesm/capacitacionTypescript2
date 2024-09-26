@@ -1,7 +1,7 @@
 import { DataBaseConfig } from "@/config/baseConfig"
 import { UserEntity } from "@/entities/user.entity";
 import { GetAllUserParams, UserI, UserPartialI } from "../interfaces/user.interface";
-import { createSuccess, failedUpdated, updatedSuccess } from "@/shared/constants";
+import { failedUpdated, updatedSuccess } from "@/shared/constants";
 
 
 export class UserRepository {

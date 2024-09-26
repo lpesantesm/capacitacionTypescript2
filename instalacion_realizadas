@@ -180,3 +180,5 @@ $ npm i reflect-metadata
 //Ajuste de @paths en tsconfig.json
 
 //Añadiendo validaciones a los distintos metodos de usuario mediante el uso de los repositorios
+
+//Actualizando la entidad de Movies y limpiando logs o importaciones no usadas
