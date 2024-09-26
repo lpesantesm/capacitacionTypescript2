@@ -5,6 +5,7 @@ export interface ServicesResponsesInterface {
   req: Request,
   res: Response,
   data?: any,
+  error?: any,
   message?: string,
   statusCode?: HTTP_CODE
 }

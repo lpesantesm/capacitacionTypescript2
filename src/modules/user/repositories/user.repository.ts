@@ -1,7 +1,7 @@
 import { DataBaseConfig } from "@/config/baseConfig"
 import { UserEntity } from "@/entities/user.entity";
 import { GetAllUserParams, UserI, UserPartialI } from "../interfaces/user.interface";
-import { createSuccess } from "@/shared/constants";
+import { createSuccess, failedUpdated, updatedSuccess } from "@/shared/constants";
 
 
 export class UserRepository {
@@ -29,7 +29,7 @@ export class UserRepository {
         .offset((page - 1) * limit)
         .limit(limit);
 
-      const usersAll =  await queryBuilder.getRawMany<UserPartialI>();
+      const usersAll = await queryBuilder.getRawMany<UserPartialI>();
 
       const total = await queryBuilder.getCount();
 
@@ -37,7 +37,7 @@ export class UserRepository {
         records: usersAll,
         page: Number(page),
         total: total,
-        totalPage: Math.ceil(total/ limit)
+        totalPage: Math.ceil(total / limit)
       }
 
       return response;
@@ -48,17 +48,23 @@ export class UserRepository {
   }
 
   /**
-   * 
+   * Método para buscar un usuario por ID
    * @param id Id del Usuario que se busca
    * @returns ObJeto del usuario que se busca
    */
-  async getFindOne(id: number) {
+  async getFindOne(field: string, value: any, id?: number) {
     try {
       const cnx = await DataBaseConfig.getConnection();
-      const usersOne = await cnx.createQueryBuilder()
+
+      let query = cnx.createQueryBuilder()
         .from(UserEntity, "user")
-        .where("user.id = :paramsId", { paramsId: id })
-        .getRawOne<UserI>()
+        .where(`user.${field} = :value`, { value })
+
+      if (id) {
+        query = query.andWhere('user.id != :id', { id });
+      }
+
+      const usersOne = await query.getRawOne<UserI>()
       return usersOne;
     } catch (error: any) {
       console.error(error)
@@ -91,7 +97,7 @@ export class UserRepository {
    * @param user Objeto con las propiedades a editar
    * @returns Retorna mensaje de Éxito o error
    */
-  async editUser(id: number,user: UserI) {
+  async editUser(id: number, user: UserI) {
     try {
       const cnx = await DataBaseConfig.getConnection();
 
@@ -108,16 +114,45 @@ export class UserRepository {
       //Método para actualizar mediante los repositorios de typeOrm
       const userRepository = cnx.getRepository(UserEntity);
 
-      const newUser = await userRepository.update(id ,user);
-      if(newUser.affected !== 1){
-        throw new Error('No se actualizo')
+      const newUser = await userRepository.update(id, user);
+      if (newUser.affected !== 1) {
+        throw new Error(failedUpdated(`el usuario con id: ${id}`, "actualizar"))
       }
-      return createSuccess('usuario');
+      return updatedSuccess('usuario');
     } catch (error: any) {
       console.error(error)
       throw new Error(error)
     }
   }
 
+  /**
+   * Método para Activar/desactivar Usuarios
+   * @param status Booleano estado a actualizar
+   * @returns Retornamos el registro en base
+   */
+  async changeStatusUser(id: number, status: boolean) {
+    try {
+      const cnx = await DataBaseConfig.getConnection();
+
+      const updated = await cnx.createQueryBuilder()
+        .update(UserEntity)
+        .set({
+          status
+        })
+        .where("id = :paramId", { paramId: id })
+        .execute();
+
+      const action = status ? 'Activar' : 'Desactivar';
+
+      if (updated.affected !== 1) {
+        throw new Error(failedUpdated(`el usuario con id: ${id}`, action))
+      }
+
+      return updatedSuccess('estado del usuario')
+    } catch (error: any) {
+      console.error(error)
+      throw new Error(error)
+    }
+  }
 
 }

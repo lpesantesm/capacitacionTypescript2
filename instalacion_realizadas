@@ -178,3 +178,5 @@ $ npm i reflect-metadata
 
 //-------------Añadimos nuevos endpoints y metodos en nuestra ruta de usuarios
 //Ajuste de @paths en tsconfig.json
+
+//Añadiendo validaciones a los distintos metodos de usuario mediante el uso de los repositorios

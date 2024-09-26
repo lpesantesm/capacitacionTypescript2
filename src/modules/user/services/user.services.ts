@@ -13,7 +13,7 @@ export class UserService {
   }
 
   async getUser(id: number) {
-    const response = await  new UserRepository().getFindOne(id);
+    const response = await  new UserRepository().getFindOne('id', id);
     return response;
   }
 
@@ -23,16 +23,39 @@ export class UserService {
   }
 
   async createUser(user: UserI) {
+    const userRepository = new UserRepository();
+    const exist = await userRepository.getFindOne('name', user.name);
+    if(exist){
+      throw new Error(`Ya existe el usuario con nombre: ${exist.name}`);
+    }
     const response = await  new UserRepository().createUser(user);
+
     return response;
   }
 
   async editUser(id: number, user: UserI){
-    const updated = await new UserRepository().editUser(id, user);
+    const userRepository = new UserRepository();
+    const existId = await userRepository.getFindOne('id', id);
+    console.log({existId});
+    if(!existId){
+      throw new Error('No existe el usuario');
+    }
+    const existName = await userRepository.getFindOne('name', user.name, id);
+    console.log({existName});
+    if(existName){
+      throw new Error(`Ya existe el usuario con nombre: ${existName.name}`);
+    }
+    const updated = userRepository.editUser(id, user);
     return updated;
   }
 
-  async changeStatus(){
-
+  async changeStatus(id: number, status: boolean){
+    const userRepository = new UserRepository();
+    const exist = await userRepository.getFindOne('id', id);
+    if(!exist){
+      throw new Error('No existe el usuario');
+    }
+    const updated = userRepository.changeStatusUser(id, status);
+    return updated;
   }
 }

@@ -19,8 +19,14 @@ export const wrapperError = (
 ) => {
   params.res.statusCode = params?.statusCode ?? HTTP_CODE.errorServer;
 
+  let currentError = params.error?.message ?? params?.error;
+
+  if(!currentError && error) {
+    currentError = error;
+  }
+
   return params.res.json({
     data: params.data ?? null,
-    message: params.message ?? error
+    message: params?.message ?? currentError
   })
 }
