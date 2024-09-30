@@ -9,22 +9,22 @@ export class MovieRoutes {
 
     router.get(
       "/:id",
-      movieController.getUser.bind(movieController)
+      movieController.getMovie.bind(movieController)
     )
 
     router.get(
       "/",
-      movieController.getAllUsers.bind(movieController)
+      movieController.getAllMovies.bind(movieController)
     )
 
     router.post(
       "/",
-      movieController.createUser.bind(movieController)
+      movieController.createMovie.bind(movieController)
     )
 
     router.put(
       "/:id",
-      movieController.editUser.bind(movieController)
+      movieController.editMovie.bind(movieController)
     )
 
     router.patch(

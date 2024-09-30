@@ -2,6 +2,8 @@ import { DataBaseConfig } from "@/config/baseConfig"
 import { UserEntity } from "@/entities/user.entity";
 import { GetAllUserParams, UserI, UserPartialI } from "../interfaces/user.interface";
 import { failedUpdated, updatedSuccess } from "@/shared/constants";
+import { ResponsesPaginationI } from "@/shared/interfaces";
+import { Brackets } from "typeorm";
 
 
 export class UserRepository {
@@ -10,27 +12,43 @@ export class UserRepository {
    * @param query es de tipo GetAllUserParams
    * @returns Un objeto con información del listado de usuario
    */
-  async getAllUsers(query: GetAllUserParams) {
+  async getAllUsers(query: GetAllUserParams): Promise<ResponsesPaginationI<UserPartialI>> {
     try {
       const cnx = await DataBaseConfig.getConnection();
 
       const page = Number(query.page);
       const limit = Number(query.limit);
       const status = query.status === 'true';
+      const search = query?.search?.toUpperCase();
 
-      const queryBuilder = cnx.createQueryBuilder()
+      let queryBuilder = cnx.createQueryBuilder()
         .select([
           'user.id as "id"',
           `concat(user.name, ' ', user.lastName) as "fullName"`,
           'user.body as "body"'
         ])
         .from(UserEntity, "user")
-        .where("user.status = :status", { status })
         .offset((page - 1) * limit)
-        .limit(limit);
+        .limit(limit)
+        .orderBy('user.id', "DESC")
+
+      if (status) {
+        queryBuilder = queryBuilder.where("user.status = :status", { status })
+      }
+
+      if (query?.search) {
+        queryBuilder = queryBuilder.andWhere(
+          new Brackets((q) => {
+            q.orWhere(`UPPER(user.name) LIKE ('%${search}%')`)
+            q.orWhere(`UPPER(user.lastName)  LIKE ('%${search}%')`)
+          })
+        )
+      }
+
+      const sql = queryBuilder.getQueryAndParameters();
+      console.log({ sql })
 
       const usersAll = await queryBuilder.getRawMany<UserPartialI>();
-
       const total = await queryBuilder.getCount();
 
       const response = {

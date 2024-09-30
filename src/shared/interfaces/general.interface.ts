@@ -10,3 +10,11 @@ export interface GetAllQueryParams {
   limit: number,
   status: string,
 }
+
+
+export interface ResponsesPaginationI<T> {
+  records: T[],
+  page: number,
+  total: number,
+  totalPage: number
+}

@@ -5,7 +5,9 @@ export interface UserLoginInterface {
   password: string
 }
 
-export interface GetAllUserParams extends GetAllQueryParams{ }
+export interface GetAllUserParams extends GetAllQueryParams{
+  search?: string
+}
 
 export interface JsonUserI {
   body: any;

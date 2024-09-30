@@ -2,12 +2,18 @@ import { Request , Response } from "express";
 
 import { serviceResponse, wrapperError } from "../../../shared/helpers/response.helper";
 import { MovieService } from "../services/movie.services";
-import { GetAllMovieParams } from "../interfaces/movie.interface";
+import { GetAllMovieParams, MovieI } from "../interfaces/movie.interface";
 
 export class MovieController {
-  async getUser(req: Request, res: Response){
+  private movieService: MovieService;
+  constructor(){
+    this.movieService = new MovieService();
+  }
+
+  async getMovie(req: Request, res: Response){
     try {
-      const response = 'ok';
+      const id = Number(req.params.id);
+      const response = await this.movieService.getMovie(id);
 
       serviceResponse({
         req,
@@ -24,7 +30,7 @@ export class MovieController {
     }
   }
 
-  async getAllUsers(req: Request, res: Response){
+  async getAllMovies(req: Request, res: Response){
     try {
       const query: GetAllMovieParams =
       {
@@ -32,7 +38,7 @@ export class MovieController {
         page:  Number(req.query.page),
         status: req.query.status as string,
       };
-      const response = await new MovieService().getAllUsers(query);
+      const response = await this.movieService.getAllMovies(query);
       serviceResponse({
         req,
         res,
@@ -47,9 +53,10 @@ export class MovieController {
     }
   }
 
-  async createUser(req: Request, res: Response){
+  async createMovie(req: Request, res: Response){
     try {
-      const response = 'ok';
+      const body = req.body as MovieI;
+      const response = await this.movieService.createMovie(body);
 
       serviceResponse({
         req,
@@ -65,9 +72,11 @@ export class MovieController {
     }
   }
 
-  async editUser(req: Request, res: Response){
+  async editMovie(req: Request, res: Response){
     try {
-      const response = 'ok';
+      const id = Number(req.params.id);
+      const movie = req.body as MovieI;
+      const response = await this.movieService.editMovie(id, movie);
 
       serviceResponse({
         req,
@@ -85,7 +94,10 @@ export class MovieController {
 
   async changeStatus(req: Request, res: Response){
     try {
-      const response = 'ok';
+      const id = Number(req.params.id);
+      const status = req.query.status === 'true'? true : false;
+      const response = await this.movieService.changesStatus(id, status);
+
 
       serviceResponse({
         req,

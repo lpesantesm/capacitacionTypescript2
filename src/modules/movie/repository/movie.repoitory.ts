@@ -2,9 +2,21 @@ import { DataBaseConfig } from "@/config/baseConfig";
 import { MovieEntity } from "@/entities/movies.entity";
 import { GetAllMovieParams, MovieI } from "../interfaces/movie.interface";
 import { UserEntity } from "@/entities/user.entity";
+import { ResponsesPaginationI } from "@/shared/interfaces";
+import { DataSource, EntityManager } from "typeorm";
+import { failedUpdated, updatedSuccess } from "@/shared/constants";
 
 export class MovieRepository {
-  async getAllMovie(query: GetAllMovieParams) {
+
+  async getMovie(cnx: DataSource, id: number) {
+    const repo = cnx.getRepository(MovieEntity);
+
+    const find = await repo.findOne({ where: { id }});
+
+    return find;
+  }
+
+  async getAllMovie(query: GetAllMovieParams): Promise<ResponsesPaginationI<MovieI>> {
     try {
       const { page, limit } = query;
       const status = query.status === 'true' ? true : false;
@@ -25,9 +37,11 @@ export class MovieRepository {
           `concat(user.name, ' ', user.lastName) as "fullName"`
         ])
         .from(MovieEntity, 'movie')
-        .innerJoin(UserEntity, "user", "movie.user_id = user.id")
+        .leftJoin(UserEntity, "user", "movie.user_id = user.id")
         .where("movie.status = :status", { status })
-        .andWhere("user.status = :status",{ status})
+        .andWhere("user.status = :status", { status })
+        .orWhere("movie.status = :status", { status: false })
+
         .offset((page - 1) * limit)
         .limit(limit)
         .orderBy('user.id', "DESC");
@@ -53,6 +67,55 @@ export class MovieRepository {
     } catch (error: any) {
       console.error(error);
       throw new Error(error);
+    }
+  }
+
+  async createMovie(cnx: EntityManager, movieObj: MovieI) {
+
+    const movieRepo = cnx.getRepository(MovieEntity);
+
+    const movie = movieRepo.create(movieObj);
+
+    const save = await movieRepo.save(movie);
+    return save;
+  }
+
+  async editMovie(cnx: EntityManager, id: number, movie: MovieI){
+    const updated = await cnx.createQueryBuilder()
+    .update(MovieEntity)
+    .set(movie)
+    .where("id = :paramId", { paramId: id })
+    .execute();
+
+    if (updated.affected !== 1) {
+      throw new Error(failedUpdated(`actualizar la Movie con id: ${id}`))
+    }
+
+    return updatedSuccess('Movie')
+  }
+
+  async changesStatus(id: number, status: boolean) {
+    try {
+      const cnx = await DataBaseConfig.getConnection();
+
+      const updated = await cnx.createQueryBuilder()
+        .update(MovieEntity)
+        .set({
+          status
+        })
+        .where("id = :paramId", { paramId: id })
+        .execute();
+
+      const action = status ? 'Activar' : 'Desactivar';
+
+      if (updated.affected !== 1) {
+        throw new Error(failedUpdated(action, `el Movie con id: ${id}`))
+      }
+
+      return updatedSuccess('estado del Movie')
+    } catch (error: any) {
+      console.error(error)
+      throw new Error(error)
     }
   }
 }

@@ -14,7 +14,7 @@ export class MovieEntity {
   @Column({
     nullable: true, type: "int", name: "user_id"
   })
-  userId!: string;
+  userId!: number;
 
   @Column({
     nullable: true, type: "varchar"
