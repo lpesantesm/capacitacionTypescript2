@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "5b1dddc0-f82c-4ea1-815f-eee42f710fc4",
+		"name": "Class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36426434"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://localhost:3000",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"manuel\",\r\n    \"password\": \"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{path}}/user/login",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI1VDIxOjQyOjM0LjA5OFoiLCJpYXQiOjE3MjczMDA1NTQsImV4cCI6MTcyNzMwMTc1NH0.GSyumjLbTx1w2dtuTWn2BECZdpk98hd5eybovBdPiH0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{path}}/user/5",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI4VDE2OjIwOjM2LjAwOVoiLCJpYXQiOjE3Mjc1NDA0MzYsImV4cCI6MTcyNzU0MTYzNn0.JLMme0Rq77ZMKPDX_PMCR3J4w0QjPVneAJ9k5t6U1AA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{path}}/user?page=1&limit=10&search=Nomb",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "search",
+							"value": "Nomb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI1VDIxOjQyOjM0LjA5OFoiLCJpYXQiOjE3MjczMDA1NTQsImV4cCI6MTcyNzMwMTc1NH0.GSyumjLbTx1w2dtuTWn2BECZdpk98hd5eybovBdPiH0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Nombre 1\",\r\n    \"lastName\": \"su Apellido\",\r\n    \"Novalid\": \"PASO\",\r\n    \"body\": {\r\n        \"path\": \"value\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{path}}/user",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI1VDIxOjU5OjE4LjY3OFoiLCJpYXQiOjE3MjczMDE1NTgsImV4cCI6MTcyNzMwMjc1OH0.k8Z9V7Axc_4jPRq7DVw82mHwLRRG4pQZgE0pXhXxRpk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"persona 44\",\r\n    \"lastName\": \"Apellido 44555\",\r\n    \"status\": true,\r\n    \"body\": {\r\n        \"path\": \"value\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{path}}/user/4456/456/96",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user",
+						"4456",
+						"456",
+						"96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activar / Desactivar usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI1VDIxOjQyOjM0LjA5OFoiLCJpYXQiOjE3MjczMDA1NTQsImV4cCI6MTcyNzMwMTc1NH0.GSyumjLbTx1w2dtuTWn2BECZdpk98hd5eybovBdPiH0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{path}}/user/1",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listart Movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI4VDE0OjM5OjA2Ljg0M1oiLCJpYXQiOjE3Mjc1MzQzNDYsImV4cCI6MTcyNzUzNTU0Nn0.ScoxDcgEM3gPv_DAHePtHvOlHlYRv77hXus_VlxhsBM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{path}}/movie?page=1&limit=10&status=true",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"movie"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "status",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI4VDE1OjEyOjUwLjMyN1oiLCJpYXQiOjE3Mjc1MzYzNzAsImV4cCI6MTcyNzUzNzU3MH0.D-wHdgyQHOR-beSYAqqAy-Xj093Zn8vD5oScx8wLSUc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{path}}/movie",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUscar Movie",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoibWFudWVsIiwicGFzc3dvcmQiOiJwYXNzIn0sImRhdGUiOiIyMDI0LTA5LTI4VDE1OjQ3OjU3Ljg5N1oiLCJpYXQiOjE3Mjc1Mzg0NzcsImV4cCI6MTcyNzUzOTY3N30.TLkwtpbshjFNrKpELqIn6LLuSpG4BheUf56qymRdVE8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{path}}/movie/1",
+					"host": [
+						"{{path}}"
+					],
+					"path": [
+						"movie",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
