@@ -12,6 +12,11 @@ export class MovieEntity {
   name!: string;
 
   @Column({
+    nullable: true, type: "int", name: "user_id"
+  })
+  userId!: string;
+
+  @Column({
     nullable: true, type: "varchar"
   })
   description!: string;

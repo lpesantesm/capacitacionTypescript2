@@ -33,7 +33,6 @@
       "@/*": ["*"],
       "@config/*": ["config/*"],
       "@helpers/*": ["shared/helpers/*"],
-      "@interfaces/*": ["shared/interfaces/*"],
       "@constants/*": ["shared/constants/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -114,5 +113,5 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "includes": ["src/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"] 
 }

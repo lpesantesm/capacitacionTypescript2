@@ -1,26 +1,22 @@
+import { FieldsBase, GetAllQueryParams } from "@/shared/interfaces";
+
 export interface UserLoginInterface {
   username: string,
   password: string
 }
 
-export interface GetAllUserParams {
-  page: number,
-  limit: number,
-  status: string,
-}
+export interface GetAllUserParams extends GetAllQueryParams{ }
 
-export interface UserI {
-  id: number,
+export interface JsonUserI {
   body: any;
-  name: string;
-  status: boolean;
-  lastName: string;
-  createAt: string,
-  updatedAt: string | undefined
 }
 
-export interface UserPartialI {
+export interface UserI extends FieldsBase, JsonUserI{
+  name: string;
+  lastName: string;
+}
+
+export interface UserPartialI extends JsonUserI {
   id: number,
   fullName: string,
-  body: any,
 }

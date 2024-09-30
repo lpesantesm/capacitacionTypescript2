@@ -36,7 +36,6 @@ export class UserService {
   async editUser(id: number, user: UserI){
     const userRepository = new UserRepository();
     const existId = await userRepository.getFindOne('id', id);
-    console.log({existId});
     if(!existId){
       throw new Error('No existe el usuario');
     }

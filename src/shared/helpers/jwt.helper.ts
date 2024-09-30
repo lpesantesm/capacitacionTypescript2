@@ -1,13 +1,13 @@
-import { config } from "@config/server"
-import jwt from "jsonwebtoken" 
-import { JwtInterface } from "../interfaces/jwt.interface"
+import { config } from "../../config/server";
+import jwt from "jsonwebtoken";
+import { JwtInterface } from "../interfaces/jwt.interface";
 
 export class JwtHelper {
-    private SECRET!: string
+  private SECRET!: string;
 
-    constructor(){
-        this.SECRET = config.server.JWT_SECRET
-    }
+  constructor(){
+    this.SECRET = config.server.JWT_SECRET;
+  }
 
   create(payload: JwtInterface<any>){
     try {

@@ -1,12 +1,14 @@
-import express  from 'express'
-import { config } from './config/server'
-import helmet from 'helmet'
-import cors from 'cors'
-import { UserRoutes } from './modules/user/routes/user.routes'
-import { ServerInterface } from './shared/interfaces/server.interface'
-import morgan from 'morgan'
-import { jwtMiddleware } from './shared/middleware/jwt.middleware'
-import { DataBaseConfig } from './config/baseConfig'
+import express from 'express';
+import { config } from './config/server';
+import helmet from 'helmet';
+import cors from "cors";
+import { UserRoutes } from './modules/user/routes/user.routes';
+import { ServerInterface } from './shared/interfaces/server.interface';
+import morgan from 'morgan';
+import { jwtMiddleware } from './shared/middleware/jwt.middleware';
+import { DataBaseConfig } from './config/baseConfig';
+import { MovieRoutes } from './modules/movie/routes/movie.routes';
+
 
 
 class Server implements ServerInterface {
@@ -15,6 +17,7 @@ class Server implements ServerInterface {
   private port!: number;
   private paths = {
     user: '/user',
+    movie: '/movie'
   }
 
   constructor() {
@@ -26,6 +29,7 @@ class Server implements ServerInterface {
 
   routes() {
     this.app.use(this.paths.user, UserRoutes.routes);
+    this.app.use(this.paths.movie, MovieRoutes.routes);
   }
 
   middlewares() {
@@ -50,6 +54,7 @@ class Server implements ServerInterface {
   }
 }
 
-// ! Se levante el servidor aqui
+
 const servidor = new Server()
-servidor.listen()
+servidor.listen();
+
